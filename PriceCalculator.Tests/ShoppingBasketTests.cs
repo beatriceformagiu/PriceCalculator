@@ -17,14 +17,13 @@ namespace PriceCalculator.Tests
             _shoppingBasket = new ShoppingBasket();
         }
 
-        [TestCase()]
+        [Test]
         public void Should_calculate_total_price_with_no_discount()
         {
             // arrange
-            _shoppingBasket.CartItems = new List<CartItem>();
             foreach (var item in _items)
             {
-                _shoppingBasket.CartItems.Add(new CartItem(item));
+                _shoppingBasket.AddCartItem(new CartItem(item));
             }
 
             // act
@@ -32,6 +31,20 @@ namespace PriceCalculator.Tests
 
             // assert
             totalPrice.Should().Be(2.95d);
+        }
+
+        [Test]
+        public void Should_calculate_total_price_with_50_percent_off_discount_on_bread()
+        {
+            // arrange
+            _shoppingBasket.AddCartItem(new CartItem(_items[0], 2));
+            _shoppingBasket.AddCartItem(new CartItem(_items[2], 2));
+            
+            // act
+            var totalPrice = _shoppingBasket.CalculateTotalPrice();
+
+            // assert
+            totalPrice.Should().Be(3.10d);
         }
     }
 }

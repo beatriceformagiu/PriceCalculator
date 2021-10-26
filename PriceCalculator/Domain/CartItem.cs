@@ -4,12 +4,12 @@ namespace PriceCalculator.Domain
 {
     public class CartItem
     {
-        public Guid ItemId { get; }
+        public Item Item { get; }
         public int Quantity { get; }
 
-        public CartItem(Guid itemId, int quantity = 1)
+        public CartItem(Item itemId, int quantity = 1)
         {
-            ItemId = itemId;
+            Item = itemId;
             Quantity = quantity;
         }
     }

@@ -24,7 +24,7 @@ namespace PriceCalculator.Tests
             _shoppingBasket.CartItems = new List<CartItem>();
             foreach (var item in _items)
             {
-                _shoppingBasket.CartItems.Add(new CartItem(item.Id));
+                _shoppingBasket.CartItems.Add(new CartItem(item));
             }
 
             // act

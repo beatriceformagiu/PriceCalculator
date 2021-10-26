@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PriceCalculator.Domain
 {
@@ -8,7 +10,7 @@ namespace PriceCalculator.Domain
 
         public double CalculateTotalPrice()
         {
-            throw new System.NotImplementedException();
+            return CartItems.Sum(cartItem => cartItem.Quantity * cartItem.Item.Price);
         }
     }
 }

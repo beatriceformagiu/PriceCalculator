@@ -1,26 +1,39 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PriceCalculator.Interfaces;
 
 namespace PriceCalculator.Domain
 {
-    public class ShoppingBasket
+    public class ShoppingBasket: IShoppingBasket
     {
-        public ShoppingBasket()
+        private readonly IShoppingBasketDiscountBuilder _shoppingBasketDiscountBuilder;
+        public List<CartItem> CartItems { get; private set; }
+        
+        public ShoppingBasket(IShoppingBasketDiscountBuilder shoppingBasketDiscountBuilder)
         {
+            _shoppingBasketDiscountBuilder = shoppingBasketDiscountBuilder;
             CartItems = new List<CartItem>();
         }
 
-        private List<CartItem> CartItems { get; set; }
-
-        public double CalculateTotalPrice()
+        public decimal CalculateTotalPrice()
         {
-            return CartItems.Sum(cartItem => cartItem.Quantity * cartItem.Item.Price);
+            var discount = _shoppingBasketDiscountBuilder.GetTotalDiscount(CartItems);
+            return CartItems.Sum(cartItem => cartItem.Quantity * cartItem.Item.Price) - discount;
+        }
+
+        public void AddItems(List<Item> items)
+        {
+            foreach (var item in items)
+            {
+                AddCartItem(new CartItem(item));
+            }
         }
 
         public void AddCartItem(CartItem newCartItem)
         {
-            if (CartItems.Contains(newCartItem))
+            var cartItemExists = CartItems.Exists(c => c.Item.Id.Equals(newCartItem.Item.Id));
+            if (cartItemExists)
             {
                 foreach (var cartItem in CartItems)
                 {

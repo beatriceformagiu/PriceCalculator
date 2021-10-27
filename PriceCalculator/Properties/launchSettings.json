@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PriceCalculator": {
+      "commandName": "Project",
+      "commandLineArgs": "Butter Butter Bread Milk Milk Milk Milk Milk Milk Milk Milk"
+    }
+  }
+}

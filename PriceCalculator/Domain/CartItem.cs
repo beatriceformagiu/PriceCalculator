@@ -7,9 +7,9 @@ namespace PriceCalculator.Domain
         public Item Item { get; set; }
         public int Quantity { get; set; }
 
-        public CartItem(Item itemId, int quantity = 1)
+        public CartItem(Item item, int quantity = 1)
         {
-            Item = itemId;
+            Item = item;
             Quantity = quantity;
         }
     }

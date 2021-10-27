@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculator", "PriceCalculator\PriceCalculator.csproj", "{E99ACAC5-098D-4F3B-B2E0-D93B294954E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceCalculator", "PriceCalculator\PriceCalculator.csproj", "{E99ACAC5-098D-4F3B-B2E0-D93B294954E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculator.Tests", "PriceCalculator.Tests\PriceCalculator.Tests.csproj", "{AEAC88C5-2E14-463D-A4B3-5D88BFD73D3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceCalculator.IntegrationTests", "PriceCalculator.Tests\PriceCalculator.IntegrationTests.csproj", "{AEAC88C5-2E14-463D-A4B3-5D88BFD73D3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculator.UnitTests", "PriceCalculator.UnitTests\PriceCalculator.UnitTests.csproj", "{AE447672-F7E9-42A6-9BB9-5033960DFF26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AEAC88C5-2E14-463D-A4B3-5D88BFD73D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEAC88C5-2E14-463D-A4B3-5D88BFD73D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEAC88C5-2E14-463D-A4B3-5D88BFD73D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE447672-F7E9-42A6-9BB9-5033960DFF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE447672-F7E9-42A6-9BB9-5033960DFF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE447672-F7E9-42A6-9BB9-5033960DFF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE447672-F7E9-42A6-9BB9-5033960DFF26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

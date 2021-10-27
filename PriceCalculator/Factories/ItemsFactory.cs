@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using PriceCalculator.Domain;
 
-namespace PriceCalculator.Tests
+namespace PriceCalculator.Factories
 {
-    public class ItemsHelper
+    public class ItemsFactory
     {
         public static List<Item> GetItems()
         {
@@ -14,13 +15,13 @@ namespace PriceCalculator.Tests
                 {
                     Id = Guid.NewGuid(),
                     Name = "Butter",
-                    Price = 0.80d
+                    Price = 0.80m
                 },
                 new Item()
                 {
                     Id = Guid.NewGuid(),
                     Name = "Milk",
-                    Price = 1.15
+                    Price = 1.15m
                 },
                 new Item()
                 {

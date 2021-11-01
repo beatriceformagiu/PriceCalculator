@@ -23,56 +23,39 @@ namespace PriceCalculator.UnitTests
         }
 
         [Test]
-        public void Should_add_cart_items()
+        public void Should_add_item()
         {
             // arrange & act
-            foreach (var item in _items)
-            {
-                _shoppingBasket.AddCartItem(new CartItem(item));
-            }
-            
-            // assert
-            _shoppingBasket.CartItems.Count.Should().Be(_items.Count);
-        }
-
-        [Test]
-        public void Should_add_cart_items_with_correct_quantity()
-        {
-            // arrange & act
-            _shoppingBasket.AddCartItem(new CartItem(_items[0]));
-            _shoppingBasket.AddCartItem(new CartItem(_items[0]));
+            _shoppingBasket.AddItem(_items[0]);
 
             // assert
             _shoppingBasket.CartItems.Count.Should().Be(1);
-            _shoppingBasket.CartItems[0].Quantity.Should().Be(2);
+            _shoppingBasket.CartItems[0].Quantity.Should().Be(1);
         }
 
         [Test]
-        public void Should_add_items()
+        public void Should_add_item_with_correct_quantity()
         {
-            // arrange & act
-           _shoppingBasket.AddItems(_items);
+            // arrange
+            var quantity = 2;
 
-            // assert
-            _shoppingBasket.CartItems.Count.Should().Be(_items.Count);
-        }
-
-        [Test]
-        public void Should_add_items_with_correct_quantity()
-        {
-            // arrange & act
-            _shoppingBasket.AddItems(new List<Item>() { _items[0], _items[0]});
+            // act
+           _shoppingBasket.AddItem(_items[0], quantity);
 
             // assert
             _shoppingBasket.CartItems.Count.Should().Be(1);
-            _shoppingBasket.CartItems[0].Quantity.Should().Be(2);
+            _shoppingBasket.CartItems[0].Quantity.Should().Be(quantity);
         }
 
+      
         [Test]
         public void Should_calculate_total_price_when_no_discounts()
         {
             // arrange
-            _shoppingBasket.AddItems(_items);
+            foreach (var item in _items)
+            {
+                _shoppingBasket.AddItem(item);
+            }
             _shoppingBasketDiscountBuilder.Setup(x => x.GetTotalDiscount(It.IsAny<List<CartItem>>())).Returns(0);
 
             // act
@@ -86,7 +69,10 @@ namespace PriceCalculator.UnitTests
         public void Should_calculate_total_price_when_discounts()
         {
             // arrange
-            _shoppingBasket.AddItems(_items);
+            foreach (var item in _items)
+            {
+                _shoppingBasket.AddItem(item);
+            }
             _shoppingBasketDiscountBuilder.Setup(x => x.GetTotalDiscount(It.IsAny<List<CartItem>>())).Returns(0.40m);
 
             // act

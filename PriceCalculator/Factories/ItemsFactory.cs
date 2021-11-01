@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PriceCalculator.Constants;
 using PriceCalculator.Domain;
 
 namespace PriceCalculator.Factories
@@ -14,19 +15,19 @@ namespace PriceCalculator.Factories
                 new Item()
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Butter",
+                    Name = ItemConstants.Butter,
                     Price = 0.80m
                 },
                 new Item()
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Milk",
+                    Name = ItemConstants.Milk,
                     Price = 1.15m
                 },
                 new Item()
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Bread",
+                    Name = ItemConstants.Bread,
                     Price = 1
                 }
             };

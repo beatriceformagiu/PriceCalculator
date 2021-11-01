@@ -19,18 +19,29 @@ namespace PriceCalculator.Domain
         public decimal CalculateTotalPrice()
         {
             var discount = _shoppingBasketDiscountBuilder.GetTotalDiscount(CartItems);
-            return CartItems.Sum(cartItem => cartItem.Quantity * cartItem.Item.Price) - discount;
+            var totalPrice = CartItems.Sum(cartItem => cartItem.Quantity * cartItem.Item.Price) - discount;
+            DisplayCartItems();
+            Console.WriteLine($"Total price:    {totalPrice}£");
+            return totalPrice;
         }
 
-        public void AddItems(List<Item> items)
+        public void AddItem(Item item, int quantity = 1)
         {
-            foreach (var item in items)
-            {
-                AddCartItem(new CartItem(item));
-            }
+            AddCartItem(new CartItem(item, quantity));
         }
 
-        public void AddCartItem(CartItem newCartItem)
+        public void DisplayCartItems()
+        {
+            Console.WriteLine("The shopping basket contains the following items:");
+            Console.WriteLine("Item  Quantity");
+            foreach (var cartItem in CartItems)
+            {
+                Console.WriteLine($"{cartItem.Item.Name}  x  {cartItem.Quantity}");
+            }
+            Console.WriteLine("--------------------------------");
+        }
+
+        private void AddCartItem(CartItem newCartItem)
         {
             var cartItemExists = CartItems.Exists(c => c.Item.Id.Equals(newCartItem.Item.Id));
             if (cartItemExists)

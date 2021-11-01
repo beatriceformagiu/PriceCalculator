@@ -4,7 +4,7 @@ namespace PriceCalculator.Interfaces
 {
     public interface IShoppingBasket
     {
-        public decimal CalculateTotalPrice();
-        public void AddCartItem(CartItem newCartItem);
+        decimal CalculateTotalPrice();
+        void AddItem(Item item, int quantity);
     }
 }

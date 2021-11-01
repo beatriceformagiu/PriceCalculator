@@ -27,7 +27,7 @@ namespace PriceCalculator.IntegrationTests
             // arrange
             foreach (var item in _items)
             {
-                _shoppingBasket.AddItems(new List<Item>() { item });
+                _shoppingBasket.AddItem(item);
             }
 
             // act
@@ -41,11 +41,8 @@ namespace PriceCalculator.IntegrationTests
         public void Should_calculate_total_price_with_50_percent_off_discount_on_bread()
         {
             // arrange
-            _shoppingBasket.AddItems(new List<Item>
-            {
-                _items[0], _items[0],
-                _items[2], _items[2]
-            });
+            _shoppingBasket.AddItem(_items[0], 2);
+            _shoppingBasket.AddItem(_items[2], 2);
 
             // act
             var totalPrice = _shoppingBasket.CalculateTotalPrice();
@@ -58,7 +55,7 @@ namespace PriceCalculator.IntegrationTests
         public void Should_calculate_total_price_with_one_milk_for_free()
         {
             // arrange
-            _shoppingBasket.AddItems(new List<Item>() { _items[1], _items[1], _items[1], _items[1] });
+            _shoppingBasket.AddItem(_items[1], 4);
 
             // act
             var totalPrice = _shoppingBasket.CalculateTotalPrice();
@@ -71,13 +68,9 @@ namespace PriceCalculator.IntegrationTests
         public void Should_calculate_total_price_with_multiple_discounts()
         {
             // arrange
-            _shoppingBasket.AddItems(new List<Item>
-            {
-                _items[0], _items[0],
-                _items[2],
-                _items[1], _items[1], _items[1], _items[1], _items[1], _items[1], _items[1], _items[1]
-            });
-
+            _shoppingBasket.AddItem(_items[0], 2);
+            _shoppingBasket.AddItem(_items[1], 8);
+            _shoppingBasket.AddItem(_items[2], 1);
 
             // act
             var totalPrice = _shoppingBasket.CalculateTotalPrice();
